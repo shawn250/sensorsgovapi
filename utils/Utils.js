@@ -9,6 +9,7 @@ var AWS = require("aws-sdk");
 //Define what kind of db environment
 const env="development";
 const config = require(`${__dirname}/../config/config.json`)[env];
+const awsConfig = require(`${__dirname}/../config/aws.json`)[env];
 
 //Using the csvparser read the data + use async callback to iterate and push in
 const processMetaDataFile = async (file, ModelInit) => {
@@ -72,9 +73,9 @@ const uploadFileToS3 = async (file, bufferData) => {
 
   //AWS upload
   let s3bucket = new AWS.S3({
-    accessKeyId: "AKIAIEO6OF62ADRWISOA",
-    secretAccessKey: "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",
-    region: "ap-southeast-1"
+    accessKeyId: awsConfig.accessKeyId,
+    secretAccessKey: awsConfig.secretAccessKey,
+    region: awsConfig.region
   });
 
   console.log("AWS_ACCESS_KEY " + s3bucket.accessKeyId);
@@ -82,7 +83,7 @@ const uploadFileToS3 = async (file, bufferData) => {
 
   //Where you want to store your file
   var params = {
-    Bucket: "sensorassetmetadatas",
+    Bucket: awsConfig.bucket,
     Key: file.originalname,
     Body: bufferData,
     ContentType: file.mimetype,
