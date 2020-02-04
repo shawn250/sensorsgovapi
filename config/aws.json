@@ -1,0 +1,14 @@
+{
+    "development": {
+      "accessKeyId": "AKIAIEO6OF62ADRWISOA",
+      "secretAccessKey": "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",
+      "region": "ap-southeast-1",
+      "bucket": "sensorassetmetadatas"
+    },
+    "production": {
+      "accessKeyId": "",
+      "secretAccessKey": "",
+      "region": ""
+    }
+  }
+  
