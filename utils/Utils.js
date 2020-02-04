@@ -7,7 +7,8 @@ const fs = require('file-system');
 var AWS = require("aws-sdk");
 
 //Define what kind of db environment
-const env="development";
+//const env="development";
+const env="production";
 const config = require(`${__dirname}/../config/config.json`)[env];
 const awsConfig = require(`${__dirname}/../config/aws.json`)[env];
 
