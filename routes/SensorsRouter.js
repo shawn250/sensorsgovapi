@@ -102,8 +102,9 @@ SensorsRouter.post("/contactUsAdd", function (req, res) {
 SensorsRouter.route("/getAllSensorLocations").get(function (req, res) {
 
   ModelInit.metadata.findAll({
-    attributes: ['sensor_id', 'sensor_type', 'latitude', 
-                 'longitude', 'pos_x', 'pos_y', 'pos_z'], //selected column fields to return
+    attributes: ['sensor_id', 'sensor_type', 'type_of_employment', 'existing_planned_or_envisioned',
+				 'pos_x', 'pos_y', 'pos_z', 'latitude', 'longitude', 'location_descriptor', 
+				 'sensor_model', 'data_resolution', 'unit', 'project_name', 'owner_agency'], //selected column fields to return
   }).then(function (sensors) {
     //console.log("LENGTH " + serverports.length);
     if (!sensors) {
@@ -126,8 +127,9 @@ SensorsRouter.route("/getSensorLocation/:location_descriptor").get(function (req
   filters["location_descriptor"] = req.params.location_descriptor
 
   ModelInit.metadata.findAll({
-     attributes: ['sensor_id', 'sensor_type', 'latitude', 
-                  'longitude', 'pos_x', 'pos_y', 'pos_z'], //selected column fields to return
+     attributes: ['sensor_id', 'sensor_type', 'type_of_employment', 'existing_planned_or_envisioned',
+				 'pos_x', 'pos_y', 'pos_z', 'latitude', 'longitude', 'location_descriptor', 
+				 'sensor_model', 'data_resolution', 'unit', 'project_name', 'owner_agency'], //selected column fields to return
      where: [filters]
   }).then(function (sensors) {
     //console.log("LENGTH " + serverports.length);
@@ -155,8 +157,9 @@ SensorsRouter.route("/getSensorLocation/:location_descriptor").get(function (req
   }
 
   ModelInit.metadata.findAll({
-     attributes: ['sensor_id', 'sensor_type', 'latitude', 
-                  'longitude', 'pos_x', 'pos_y', 'pos_z'], //selected column fields to return
+      attributes: ['sensor_id', 'sensor_type', 'type_of_employment', 'existing_planned_or_envisioned',
+				 'pos_x', 'pos_y', 'pos_z', 'latitude', 'longitude', 'location_descriptor', 
+				 'sensor_model', 'data_resolution', 'unit', 'project_name', 'owner_agency'], //selected column fields to return
      where: [filters]
   }).then(function (sensors) {
     //console.log("LENGTH " + serverports.length);
